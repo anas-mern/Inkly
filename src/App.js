@@ -4,7 +4,7 @@ import { AuthProvider } from "./context/auth";
 import PrivateRouter from "./routes/PrivateRouter";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import EditJob from "./pages/EditJob";
+import EditNote from "./pages/EditNote";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route element={<Register />} path="/register" />
           <Route element={<PrivateRouter />} path="/">
             <Route path="/" element={<HomePage />} />
-            <Route path="/edit-job/:id" element={<EditJob />} />
+            <Route path="/edit-note/:id" element={<EditNote />} />
           </Route>
         </Routes>
       </div>

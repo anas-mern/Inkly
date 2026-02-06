@@ -12,12 +12,12 @@ export default function RedirectPage() {
   }, [navigate]);
 
   return (
-    <div className="fullscreen-center items-center bg-gradient-to-br from-purple-500 to-indigo-600">
-      <div className="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-md animate-fadeIn">
-        <h1 className="text-3xl font-bold text-green-600 mb-4">
+    <div style={{height:'100vh'}} className="bg-dark fullscreen-center items-center bg-gradient-to-br from-purple-500 to-indigo-600">
+      <div className="p-8 rounded-2xl shadow-2xl text-center max-w-md animate-fadeIn">
+        <h1 className="text-3xl font-bold text-white mb-4">
           You Need To Have An Account
         </h1>
-        <p className="text-gray-700 mb-6">
+        <p className="text-white mb-6">
           You Are Not Authenticated (Error 401) ❌
         </p>
       </div>

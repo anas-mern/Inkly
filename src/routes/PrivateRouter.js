@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import RedirectPage from "../pages/RedirectPage";
@@ -10,7 +10,7 @@ export default function PrivateRouter() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/jobs", {
+        const response = await axios.get("http://localhost:5000/api/v1/notes", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

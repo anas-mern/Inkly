@@ -2,28 +2,28 @@ import axios from "axios";
 import NavBar from "../components/NavBar";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
-import JobForm from "../components/JobForm";
+import NoteForm from "../components/NoteForm";
 
 export default function HomePage() {
-  const [jobs, setJobs] = useState([]);
+  const [notes, setNotes] = useState([]);
   useEffect(() => {
-    const getJobs = async () => {
-      const res = await axios.get("http://localhost:5000/api/v1/jobs", {
+    const getNotes = async () => {
+      const res = await axios.get("http://localhost:5000/api/v1/notes", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      setJobs(res.data.data);
+      setNotes(res.data.data);
     };
-    getJobs();
-  },[]);
+    getNotes();
+  }, []);
   return (
-    <div>
+    <div className="bg-dark pb-4" style={{ minHeight: "100vh" }}>
       <NavBar />
-      <JobForm type="Create" jobs={jobs} setJobs={setJobs} />
+      <NoteForm type="Create" notes={notes} setNotes={setNotes} />
       <div className="d-flex w-75 m-auto mt-4 flex-wrap cards">
-        {jobs.map((j) => (
-          <Card key={j._id} job={j} jobs={jobs} setJobs={setJobs} />
+        {notes.map((n) => (
+          <Card key={n._id} note={n} notes={notes} setNotes={setNotes} />
         ))}
       </div>
     </div>

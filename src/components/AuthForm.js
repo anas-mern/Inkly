@@ -39,7 +39,7 @@ export default function AuthForm(props) {
 
       const res = await axios.post(
         `http://localhost:5000/api/v1/auth/${props.type.toLowerCase()}`,
-        body
+        body,
       );
 
       const newAuth = { user: res.data.user, token: res.data.token };
@@ -64,8 +64,8 @@ export default function AuthForm(props) {
   };
 
   return (
-    <div className="fullscreen-center">
-      <div className="soft-shadow w-50">
+    <div className="fullscreen-center bg-dark" style={{ height: "100vh" }}>
+      <div className="soft-shadow w-50 bg-black text-white p-4 rounded-4">
         <h1 className="text-center mb-4">{props.type}</h1>
         <Form onSubmit={submit}>
           {props.type === "Register" ? (
@@ -74,6 +74,7 @@ export default function AuthForm(props) {
               <Form.Control
                 type="text"
                 value={username}
+                className="text-white bg-special"
                 required
                 onChange={(e) => setUsername(e.target.value)}
               ></Form.Control>
@@ -88,6 +89,7 @@ export default function AuthForm(props) {
               type="email"
               value={email}
               required
+              className="text-white bg-special"
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
@@ -98,6 +100,7 @@ export default function AuthForm(props) {
               type="password"
               value={password}
               required
+              className="text-white bg-special"
               onChange={(e) => setPassword(e.target.value)}
             ></Form.Control>
           </Form.Group>

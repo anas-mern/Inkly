@@ -1,25 +1,31 @@
 import axios from "axios";
-import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function Card({ job,jobs,setJobs }) {
-  const deleteJob = async () => {
-    await axios.delete(`http://localhost:5000/api/v1/jobs/${job._id}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+export default function Card({ note, notes, setNotes }) {
+  const deleteNote = async () => {
+    await axios.delete(`http://localhost:5000/api/v1/notes/${note._id}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
-    setJobs(jobs.filter(j=>j._id!==job._id))
+    setNotes(notes.filter((j) => j._id !== note._id));
   };
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  
   return (
-    <div className="card p-3 bg-success-subtle mt-2">
-      <h3>{job.company}</h3>
-      <h6>{job.position}</h6>
+    <div className="card p-3 bg-black text-white mt-2">
+      <h3 className="text-center border-bottom py-3 mb-3">{note.title}</h3>
+      <p className="p-0">" {note.body} "</p>
       <div className="d-flex gap-3 align-items-center">
-        <p className="m-0">{job.status}</p>
-        <Button variant="secondary" onClick={()=>navigate(`edit-job/${job._id}`)}>Edit</Button>
-        <Button variant="danger" onClick={deleteJob}>
-          Delete
+        <Button
+          variant="secondary"
+          onClick={() => navigate(`edit-note/${note._id}`)}
+        >
+          <FontAwesomeIcon icon={faEdit} />
+        </Button>
+        <Button variant="danger" onClick={deleteNote}>
+          <FontAwesomeIcon icon={faTrash} />
         </Button>
       </div>
     </div>
