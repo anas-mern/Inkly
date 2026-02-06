@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import apiLinkv1 from "../apiLink";
 
 export default function Card({ note, notes, setNotes }) {
   const deleteNote = async () => {
-    await axios.delete(`http://localhost:5000/api/v1/notes/${note._id}`, {
+    await axios.delete(`${apiLinkv1}/notes/${note._id}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     });
     setNotes(notes.filter((j) => j._id !== note._id));

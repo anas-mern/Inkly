@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth";
+import apiLinkv1 from "../apiLink";
 
 export default function AuthForm(props) {
   const [msg, setMsg] = useState("");
@@ -38,7 +39,7 @@ export default function AuthForm(props) {
       if (username) body.username = username;
 
       const res = await axios.post(
-        `http://localhost:5000/api/v1/auth/${props.type.toLowerCase()}`,
+        `${apiLinkv1}/auth/${props.type.toLowerCase()}`,
         body,
       );
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import axios from "axios";
 import RedirectPage from "../pages/RedirectPage";
+import apiLinkv1 from "../apiLink";
 
 export default function PrivateRouter() {
   const token = localStorage.getItem('token')
@@ -10,7 +11,7 @@ export default function PrivateRouter() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/notes", {
+        const response = await axios.get(`${apiLinkv1}/notes`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

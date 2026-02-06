@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import apiLinkv1 from "../apiLink";
 
 export default function NoteForm({ type, notes, setNotes }) {
   const [title, setTitle] = useState("");
@@ -16,14 +17,14 @@ export default function NoteForm({ type, notes, setNotes }) {
       const body = { title, body: noteBody };
       let res;
       if (type === "Create") {
-        res = await axios.post(`http://localhost:5000/api/v1/notes`, body, {
+        res = await axios.post(`${apiLinkv1}/notes`, body, {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         });
         console.log(res);
         setNotes([...notes, res.data.data]);
       } else if (type === "Edit") {
         res = await axios.patch(
-          `http://localhost:5000/api/v1/notes/${id}`,
+          `${apiLinkv1}/notes/${id}`,
           body,
           {
             headers: {
@@ -44,7 +45,7 @@ export default function NoteForm({ type, notes, setNotes }) {
     const getNote = async () => {
       if (type === "Edit") {
         const res = await axios.get(
-          `http://localhost:5000/api/v1/notes/${id}`,
+          `${apiLinkv1}/notes/${id}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

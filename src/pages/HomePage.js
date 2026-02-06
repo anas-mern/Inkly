@@ -3,12 +3,13 @@ import NavBar from "../components/NavBar";
 import Card from "../components/Card";
 import { useEffect, useState } from "react";
 import NoteForm from "../components/NoteForm";
+import apiLinkv1 from "../apiLink";
 
 export default function HomePage() {
   const [notes, setNotes] = useState([]);
   useEffect(() => {
     const getNotes = async () => {
-      const res = await axios.get("http://localhost:5000/api/v1/notes", {
+      const res = await axios.get(`${apiLinkv1}/notes`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

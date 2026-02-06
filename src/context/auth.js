@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import apiLinkv1 from "../apiLink";
 
 export const AuthContext = createContext();
 
@@ -10,7 +11,7 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem("token");
     if (!token) return setLoading(false);
     axios
-      .get("http://localhost:5000/api/v1/auth/me", {
+      .get(`${apiLinkv1}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
