@@ -17,9 +17,8 @@ export default function Card({ note, notes, setNotes }) {
   return (
     <div className="card p-3 bg-black text-white mt-2">
       <h3 className="text-center border-bottom py-3 mb-3">{note.title}</h3>
-      <p className="p-0" style={{ whiteSpace: "pre-wrap" }}>
-        " {note.body} "
-      </p>
+      <p className="p-0 note-body">{note.body}</p>
+
       <div className="d-flex justify-content-around align-items-center py-2">
         <div className="d-flex gap-3 align-items-center">
           <Button
@@ -32,7 +31,9 @@ export default function Card({ note, notes, setNotes }) {
             <FontAwesomeIcon icon={faTrash} />
           </Button>
         </div>
-        <p className="m-0 fst-italic text-secondary">{note.createdAt.split("T")[0]}</p>
+        <p className="m-0 fst-italic text-secondary">
+          {note.createdAt.split("T")[0]}
+        </p>
       </div>
     </div>
   );

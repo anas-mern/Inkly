@@ -43,6 +43,10 @@ img {
 .card {
   width: 49%;
 }
+.note-body {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 
 @media (max-width: 426px) {
   .form-label {
